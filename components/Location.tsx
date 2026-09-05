@@ -22,13 +22,19 @@ export default function Location() {
 
         <div className="location__grid">
           <Reveal className="location__mapWrap" variant="left">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="location__mapFallback"
-              src={asset('/images/Building Exterior.JPG')}
-              alt="Map area around Woodward Avenue in downtown Detroit"
-              aria-hidden="true"
-            />
+            <div className="location__mapImageWrap">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="location__mapFallback"
+                src={asset('/images/hero.JPG')}
+                alt="Apex Housing building exterior on Woodward Avenue in Detroit"
+              />
+              <div className="location__mapOverlay" aria-hidden="true" />
+              <div className="location__mapBadge">
+                <span className="location__mapBadgeLabel">Apex Housing</span>
+                <span className="location__mapBadgeMeta">Detroit, MI</span>
+              </div>
+            </div>
             <iframe
               title={`Map of ${site.street}, ${site.cityLine}`}
               className="location__map"
@@ -38,11 +44,12 @@ export default function Location() {
             />
             <a
               className="location__mapLink"
-              href={`https://www.google.com/maps/search/?api=1&query=${site.mapQuery}`}
+              href={`https://www.google.com/maps/dir/?api=1&destination=${site.mapQuery}`}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Get directions to ${site.street}, ${site.cityLine}`}
             >
-              Open in Google Maps
+              <span>Get Directions</span>
             </a>
           </Reveal>
 

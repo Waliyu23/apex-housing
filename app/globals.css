@@ -1024,13 +1024,50 @@ textarea {
   position: relative;
   overflow: hidden;
 }
-.location__mapFallback {
-  object-fit: cover;
-  filter: saturate(0.75) contrast(1.02);
-  width: 100%;
-  height: 100%;
+.location__mapImageWrap {
   position: absolute;
   inset: 0;
+  z-index: 0;
+}
+.location__mapFallback {
+  object-fit: cover;
+  filter: saturate(0.7) contrast(1.06) brightness(0.68);
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.location__mapOverlay {
+  background: linear-gradient(180deg, rgba(13, 10, 8, 0.28) 0%, rgba(13, 10, 8, 0.58) 100%);
+  position: absolute;
+  inset: 0;
+}
+.location__mapBadge {
+  background: rgba(12, 10, 8, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+.location__mapBadgeLabel {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.location__mapBadgeMeta {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .location__map {
   filter: saturate(0.92) contrast(1.02);
@@ -1039,22 +1076,37 @@ textarea {
   height: clamp(320px, 46vh, 470px);
   display: block;
   position: relative;
+  z-index: 1;
+  opacity: 0.7;
 }
 .location__mapLink {
-  border-radius: var(--radius);
-  background: var(--ink);
-  color: var(--text-invert);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d9b26d 0%, #b67d2e 100%);
+  color: #1a140f;
   font-size: var(--text-xs);
-  letter-spacing: 0.04em;
-  box-shadow: var(--shadow-md);
-  padding: 0.6rem 1rem;
-  font-weight: 600;
+  letter-spacing: 0.06em;
+  box-shadow: 0 14px 28px rgba(182, 125, 46, 0.32);
+  padding: 0.82rem 1.2rem;
+  font-weight: 800;
   position: absolute;
   bottom: 1rem;
   left: 1rem;
+  z-index: 3;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    filter 0.25s var(--ease);
 }
 .location__mapLink:hover {
-  background: var(--brass-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(182, 125, 46, 0.42);
+  filter: brightness(1.04);
+}
+.location__mapLink:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 .location__list {
   gap: 0;

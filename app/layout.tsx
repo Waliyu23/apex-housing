@@ -47,7 +47,14 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     locale: 'en_US',
-    images: ['/images/hero.JPG'],
+    images: [
+      {
+        url: '/images/hero.JPG',
+        width: 1200,
+        height: 800,
+        alt: `${site.name} hero image`,
+      },
+    ],
     type: 'website',
   },
   twitter: {
